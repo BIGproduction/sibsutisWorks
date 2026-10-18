@@ -5,7 +5,7 @@ int main() {
     int days_per_year;
     int total_days;
 
-    year = 3;
+    year = 4;
     days_per_year = 365;
 
     total_days = year * days_per_year;
