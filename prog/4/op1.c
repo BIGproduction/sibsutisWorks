@@ -1,9 +1,5 @@
 #include <stdio.h>
 
-/* Символическая константа для коэффициента конвертации.
- * В 1 градусе 60 минут. 
- * Можно использовать #define MINUTES_IN_DEGREE 60
- */
 const int MINUTES_IN_DEGREE = 60;
 
 int main() {
