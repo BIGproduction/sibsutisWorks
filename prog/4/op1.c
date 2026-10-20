@@ -3,31 +3,19 @@
 const int MINUTES_IN_DEGREE = 60;
 
 int main() {
-    int total_minutes; // Базовая единица - минуты
+    int total_min;
     int degrees;
-    int remaining_minutes;
+    int remaining_min;
 
-    printf("Программа конвертации углов.\n");
-    printf("Введите величину в минутах (для выхода введите 0 или отрицательное число, либо Ctrl+D):\n");
+    printf("Программа конвертации углов \n");
+    printf("Введите величину в минутах: \n");
 
-    // Организуем цикл while для многократного ввода
-    // scanf возвращает количество успешно считанных элементов. 
-    // Если ввод некорректен или достигнут EOF, цикл прервется.
-    while (scanf("%d", &total_minutes) == 1 && total_minutes > 0) {
+    while (scanf("%d", &total_min) == 1 && total_min > 0) {
         
-        /* 
-         * Вычисляем градусы.
-         * При целочисленном делении дробная часть отбрасывается, 
-         * так как тип int не может хранить дробные значения. 
-         * Это аналог математического "целого деления с остатком".
-         */
-        degrees = total_minutes / MINUTES_IN_DEGREE;
-        
-        // Вычисляем остаток минут
-        remaining_minutes = total_minutes % MINUTES_IN_DEGREE;
+        degrees = total_min / MINUTES_IN_DEGREE;
+        remaining_min = total_min % MINUTES_IN_DEGREE;
 
-        // Выводим результат в формате: [Градусы] град [Минуты] мин
-        printf("%d град %d мин\n", degrees, remaining_minutes);
+        printf("%d град %d мин\n", degrees, remaining_min);
     }
 
     printf("Программа завершена.\n");
