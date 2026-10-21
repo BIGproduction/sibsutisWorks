@@ -1,35 +1,31 @@
 #include <stdio.h>
-
-const int MINUTES_IN_DEGREE = 60;
+#include <stdint.h>
 
 int main() {
-    int total_minutes; // Базовая единица - минуты
-    int degrees;
-    int remaining_minutes;
+    uint16_t n1, n2;
+    float result;
 
-    printf("Программа конвертации углов.\n");
-    printf("Введите величину в минутах (для выхода введите 0 или отрицательное число, либо Ctrl+D):\n");
-
-    // Организуем цикл while для многократного ввода
-    // scanf возвращает количество успешно считанных элементов. 
-    // Если ввод некорректен или достигнут EOF, цикл прервется.
-    while (scanf("%d", &total_minutes) == 1 && total_minutes > 0) {
-        
-        /* 
-         * Вычисляем градусы.
-         * При целочисленном делении дробная часть отбрасывается, 
-         * так как тип int не может хранить дробные значения. 
-         * Это аналог математического "целого деления с остатком".
-         */
-        degrees = total_minutes / MINUTES_IN_DEGREE;
-        
-        // Вычисляем остаток минут
-        remaining_minutes = total_minutes % MINUTES_IN_DEGREE;
-
-        // Выводим результат в формате: [Градусы] град [Минуты] мин
-        printf("%d град %d мин\n", degrees, remaining_minutes);
+    printf("Введите два значения типа uint16_t (n1 и n2):\n");
+    
+    if (scanf("%hu %hu", &n1, &n2) != 2) {
+        printf("Ошибка ввода.\n");
+        return 1;
     }
 
-    printf("Программа завершена.\n");
+    if (n1 + n2 == 0) {
+        printf("Ошибка: деление на ноль (n1 + n2 = 0).\n");
+        return 1;
+    }
+
+    result = (float)n1 / (n1 + n2);
+
+    printf("Результат: %f\n", result);
+
+    printf("Размер типа uint16_t: %llu байт\n", (unsigned long long)sizeof(uint16_t));
+    printf("Размер типа float: %llu байт\n", (unsigned long long)sizeof(float));
+    
+    printf("Размер переменной n1: %llu байт\n", (unsigned long long)sizeof(n1));
+    printf("Размер переменной result: %llu байт\n", (unsigned long long)sizeof(result));
+
     return 0;
 }
