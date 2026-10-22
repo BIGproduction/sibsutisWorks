@@ -7,12 +7,12 @@ int main() {
 
     printf("Введите число N: ");
 
-    int is_valid_input = (scanf("%d", &N) == 1);
-    int is_valid_range = (N >= 2);
-    int canary = is_valid_input * is_valid_range;
-
-    printf("%.*s", (1 - is_valid_input) * 100, "Ошибка ввода \n");
-    printf("%.*s", (1 - is_valid_range) * 100, "Для вычисления A(N, 2) число N должно быть >= 2 \n");
+    int canary = (scanf("%d", &N) == 1);
+    
+    printf("%s", canary ? "" : "Ошибка ввода \n");
+    
+    canary *= (N >= 2);
+    printf("%s", canary ? "" : "Для вычисления A(N, 2) число N должно быть >= 2 \n");
 
     accumulator *= canary;
 
@@ -20,7 +20,8 @@ int main() {
         accumulator *= (N - i);
         i++;
     }
-    printf("Число размещений A(%2d, 2) = %2d\n", N, accumulator);
+
+    printf("Число размещений A(%d, 2) = %d\n", N, accumulator);
 
     return 0;
 }
