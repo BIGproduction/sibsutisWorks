@@ -18,6 +18,5 @@ int main() {
         printf("%d град %d мин\n", degrees, remaining_min);
     }
 
-    printf("Программа завершена \n");
     return 0;
 }

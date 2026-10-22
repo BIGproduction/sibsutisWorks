@@ -18,7 +18,6 @@ int main() {
     }
 
     result = (float)n1 / (n1 + n2);
-
     printf("Результат: %f\n", result);
 
     printf("Размер типа uint16_t: %llu байт\n", (unsigned long long)sizeof(uint16_t));
