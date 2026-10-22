@@ -1,27 +1,26 @@
 #include <stdio.h>
 
 int main() {
-    int N;
+    int N = 0;
     int accumulator = 1;
     int i = 0;
 
     printf("Введите число N: ");
 
-    if (scanf("%d", &N) != 1) {
-        printf("Ошибка ввода \n");
-        return 1;
-    }
+    int is_valid_input = (scanf("%d", &N) == 1);
+    int is_valid_range = (N >= 2);
+    int canary = is_valid_input * is_valid_range;
 
-    if (N < 2) {
-        printf("Для вычисления A(N, 2) число N должно быть >= 2 \n");
-        return 1;
-    }
+    printf("%.*s", (1 - is_valid_input) * 100, "Ошибка ввода \n");
+    printf("%.*s", (1 - is_valid_range) * 100, "Для вычисления A(N, 2) число N должно быть >= 2 \n");
 
-    while (i < 2) {
+    accumulator *= canary;
+
+    while (i < canary * 2) {
         accumulator *= (N - i);
         i++;
     }
-    printf("Число размещений A(%d, 2) = %d\n", N, accumulator);
+    printf("Число размещений A(%2d, 2) = %2d\n", N, accumulator);
 
     return 0;
 }
