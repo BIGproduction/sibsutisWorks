@@ -22,9 +22,6 @@ int main() {
 
     printf("Размер типа uint16_t: %llu байт\n", (unsigned long long)sizeof(uint16_t));
     printf("Размер типа float: %llu байт\n", (unsigned long long)sizeof(float));
-    
-    printf("Размер переменной n1: %llu байт\n", (unsigned long long)sizeof(n1));
-    printf("Размер переменной result: %llu байт\n", (unsigned long long)sizeof(result));
 
     return 0;
 }
