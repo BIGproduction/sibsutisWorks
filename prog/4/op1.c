@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-const int MINUTES_IN_DEGREE = 60;
+const int MIN_IN_DEGREE = 60;
 
 int main() {
     int total_min;
@@ -12,8 +12,8 @@ int main() {
 
     while (scanf("%d", &total_min) == 1 && total_min > 0) {
         
-        degrees = total_min / MINUTES_IN_DEGREE;
-        remaining_min = total_min % MINUTES_IN_DEGREE;
+        degrees = total_min / MIN_IN_DEGREE;
+        remaining_min = total_min % MIN_IN_DEGREE;
 
         printf("%d град %d мин\n", degrees, remaining_min);
     }
