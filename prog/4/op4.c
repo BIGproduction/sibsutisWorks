@@ -20,7 +20,6 @@ int main() {
         printf("Для N = %d: A(N, 2) = %d\n", N, accumulator);
     }
 
-    printf("Программа завершена.\n");
     return 0;
 }
 
