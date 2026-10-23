@@ -2,19 +2,26 @@
 
 int main() {
     int N;
-    int accumulator = 1;
-    int i = 0;
+    
+    printf("Вычисление числа размещений A(N, 2) = N * (N - 1)\n");
+    printf("Введите N: \n");
 
-    printf("Введите число N: ");
+    while (scanf("%d", &N) == 1) {
 
-    scanf("%d", &N);
+        int accumulator = 1;
+        int i = 0;
 
-    while (i < 2) {
-        accumulator *= (N - i);
-        i++;
+        while (i < 2) {
+
+            accumulator *= (N - i); 
+            i++;
+        }
+
+        printf("Для N = %d: A(N, 2) = %d\n", N, accumulator);
+        printf("Введите следующее N (или < 2 для выхода):\n");
     }
-    printf("Число размещений A(%d, 2) = %d\n", N, accumulator);
 
+    printf("Программа завершена.\n");
     return 0;
 }
 
