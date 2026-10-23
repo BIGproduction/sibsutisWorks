@@ -7,15 +7,7 @@ int main() {
 
     printf("Введите число N: ");
 
-    if (scanf("%d", &N) != 1) {
-        printf("Ошибка ввода \n");
-        return 1;
-    }
-
-    if (N < 2) {
-        printf("Для вычисления A(N, 2) число N должно быть >= 2 \n");
-        return 1;
-    }
+    scanf("%d", &N);
 
     while (i < 2) {
         accumulator *= (N - i);
