@@ -6,6 +6,8 @@ int main() {
     float result;
 
     printf("Введите два значения типа uint16_t (n1 и n2):\n");
+    
+    scanf("%hu %hu", &n1, &n2);
 
     result = (float)n1 / (n1 + n2);
     printf("Результат: %f\n", result);
