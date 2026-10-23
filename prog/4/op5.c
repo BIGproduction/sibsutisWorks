@@ -8,7 +8,6 @@ double w_to_kw(double w) {
 int main() {
     double value;
 
-    printf("Конвертер Ватт в Киловатт \n\n");
     printf("Введите значение в Ваттах: \n");
 
     while (scanf("%lf", &value) == 1) {
