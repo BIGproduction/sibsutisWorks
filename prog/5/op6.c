@@ -9,7 +9,7 @@ int main() {
 
     int result = (num1 + num2);
 
-    printf("ты посчитал: ", result);
+    printf("ты посчитал: %d", result);
 
     return 0;
 }
