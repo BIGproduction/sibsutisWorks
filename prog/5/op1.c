@@ -1,0 +1,25 @@
+#include <stdio.h>
+
+const int MIN_IN_DEGREE = 60;
+
+int main() {
+    int total_min;
+    int degrees;
+    int remaining_min;
+
+    printf("Программа конвертации углов \n");
+    printf("Введите величину в минутах: \n");
+
+    while (scanf("%d", &total_min) == 1 && total_min > 0) {
+        
+        degrees = total_min / MIN_IN_DEGREE;
+        remaining_min = total_min % MIN_IN_DEGREE;
+
+        printf("%d град %d мин\n", degrees, remaining_min);
+    }
+
+    return 0;
+}
+
+/* потому что переменная типа int не предназначена для хранения вещественных чисел (чисел с плавающей точкой)
+   Остаток мы получаем отдельно с помощью оператора %                                                         */
