@@ -5,7 +5,7 @@ int main() {
     int num2;
 
     printf("Ведите любые числа для сложения: \n");
-    scanf("%d %d", num1, num2);
+    scanf("%d %d", &num1, &num2);
 
     int result = (num1 + num2);
 
