@@ -6,7 +6,7 @@ double w_to_kw(double w) {
 }
 
 int main() {
-    double value;
+    double valuep;
 
     printf("Введите значение в Ваттах: \n");
 
