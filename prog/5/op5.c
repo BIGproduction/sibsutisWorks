@@ -1,20 +1,23 @@
 #include <stdio.h>
+#include <math.h>
 
-double w_to_kw(double w) {
-    const double W_IN_KW = 1000.0; 
-    return w / W_IN_KW;
+double calc(double a, double b) {
+    double result = sqrt(pow(a, 2) + pow(b, 2));
+    return result;
 }
 
 int main() {
-    double value;
+    double a, b;
 
-    printf("Введите значение в Ваттах: \n");
+    printf("Введите пары чисел a и b (для выхода введите любой символ вместо числа):\n");
 
-    while (scanf("%lf", &value) == 1) {
+    while (scanf("%lf %lf", &a, &b) == 2) {
+        
+        double res = calc(a, b);
 
-        double result = w_to_kw(value);
-        printf("%.2f Вт = %.2f кВт\n", value, result);
+        printf("calc(%.1f, %.1f) = %.4f\n", a, b, res);
     }
+    printf("Программа завершена.\n");
 
     return 0;
 }
