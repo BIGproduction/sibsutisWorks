@@ -1,25 +1,27 @@
 #include <stdio.h>
-
-const int MIN_IN_DEGREE = 60;
+#include <math.h>
 
 int main() {
-    int total_min;
-    int degrees;
-    int remaining_min;
+    double A = 0.0;
+    double B = 5.0;
+    double H = 1.0;
+    
+    double x;
 
-    printf("Программа конвертации углов \n");
-    printf("Введите величину в минутах: \n");
+    printf("----------------------------------------\n");
+    printf("|   X   |  Y = 2^X (Показательная ф-я) |\n");
+    printf("----------------------------------------\n");
 
-    while (scanf("%d", &total_min) == 1 && total_min > 0) {
-        
-        degrees = total_min / MIN_IN_DEGREE;
-        remaining_min = total_min % MIN_IN_DEGREE;
+    // Цикл от A до B с шагом H
+    // Используем условие x <= B + H/2, чтобы компенсировать возможные
+    // ошибки округления чисел с плавающей точкой (float/double)
+    for (x = A; x <= B + H / 2.0; x += H) {
+        double y = pow(2.0, x);
 
-        printf("%d град %d мин\n", degrees, remaining_min);
+        printf("| %5.1f | %25.2f |\n", x, y);
     }
+    
+    printf("----------------------------------------\n");
 
     return 0;
 }
-
-/* потому что переменная типа int не предназначена для хранения вещественных чисел (чисел с плавающей точкой)
-   Остаток мы получаем отдельно с помощью оператора %                                                         */
