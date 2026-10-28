@@ -1,15 +1,25 @@
 #include <stdio.h>
+#include <math.h>
+
+#define N 100
+#define PI 3.14159265
 
 int main() {
-    const int HEIGHT = 5; 
-    int spaces[] = {0, 4, 8, 4, 0}; 
+    int i, j;
+    double x;
+    int position;
 
-    for (int i = 0; i < HEIGHT; i++) {
-        
-        for (int j = 0; j < spaces[i]; j++) {
-            printf(" ");
+    for (i = 0; i <= N; i++) {
+        x = sin(2 * PI * 5 * i / N);
+        position = (int)((x + 1) * 20);
+
+        printf("%3d |", i);
+
+        for (j = 0; j <= 40; j++) {
+            printf("%c", "                                        *"[j == position]);
         }
-        printf("*\n");
+
+        printf("\n");
     }
 
     return 0;
