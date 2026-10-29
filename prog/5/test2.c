@@ -20,7 +20,7 @@ int main(void) {
             if (j == position)
                 printf("*");
             else if (j == 20)
-                printf("|");  // Нулевая линия
+                printf("|");
             else
                 printf(" ");
         }

@@ -1,15 +1,22 @@
 #include <stdio.h>
 
 int main() {
-    const int HEIGHT = 5; 
-    int spaces[] = {0, 4, 8, 4, 0}; 
+    const int HEIGHT = 5;
+    const int TIERS = 3;
 
-    for (int i = 0; i < HEIGHT; i++) {
+    for (int tier = 0; tier < TIERS; tier++) {
         
-        for (int j = 0; j < spaces[i]; j++) {
-            printf(" ");
+        for (int i = 0; i < HEIGHT; i++) {
+            
+            for (int j = 0; j < HEIGHT - 1 - i; j++) {
+                printf(" ");
+            }
+            
+            for (int k = 0; k < (2 * i + 1); k++) {
+                printf("*");
+            }
+            printf("\n");
         }
-        printf("*\n");
     }
 
     return 0;
