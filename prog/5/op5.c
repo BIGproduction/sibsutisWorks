@@ -15,9 +15,7 @@ int main() {
         
         double res = calc(a, b);
 
-        printf("calc(%.1f, %.1f) = %.4f\n", a, b, res);
+        printf("результат calc(%.1f, %.1f) = %.4f\n", a, b, res);
     }
-    printf("Программа завершена.\n");
-
     return 0;
 }
