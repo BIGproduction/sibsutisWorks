@@ -11,7 +11,7 @@ int main() {
         arr[i] = arr[i - 1] + 2.0 * arr[i - 2];
     }
 
-    printf("Исходный массив:    ");
+    printf("Исходный массив: ");
     for (int i = 0; i < 8; i++) {
         printf("%.1f ", arr[i]);
     }
