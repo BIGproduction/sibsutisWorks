@@ -13,16 +13,14 @@ int main() {
 
     printf("Исходный массив:    ");
     for (int i = 0; i < 8; i++) {
-        printf("%.2f ", arr[i]);
+        printf("%.1f ", arr[i]);
     }
     printf("\n");
 
     for (int i = 0; i < 8; i++) {
         sum += arr[i];
     }
-
-    printf("Обработанный массив: (Сумма элементов) \n");
-    printf("Сумма = %.2f\n", sum);
+    printf("Сумма элементов массива = %.1f\n", sum);
 
     return 0;
 }
