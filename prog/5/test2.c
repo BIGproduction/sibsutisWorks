@@ -8,7 +8,7 @@
 int main(void) {
     int total_samples = PERIODS * SAMPLES_PER_PERIOD;
 
-    for (int i = 0; i < total_samples; i++) {
+    for (int i = 0; i <= total_samples; i++) {
 
         double x = 2.0 * PI * i / SAMPLES_PER_PERIOD;
         double y = sin(x);
