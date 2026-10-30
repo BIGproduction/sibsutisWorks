@@ -10,16 +10,16 @@ int main() {
         scanf("%d", &N);
     }
 
-    double sign = -1.0;
-
     for (int i = 1; i <= N; i++) {
-        
-        double numerator = sign; 
-        double denominator = 2.0 * i + 1.0; 
-        
-        S = S + (numerator / denominator);
 
-        sign - sign * -1.0;
+        double numerator = 1.0;
+        for (int j = 0; j < i; j++) {
+            numerator *= -1.0;
+        }
+        
+        double denominator = 2.0 * i + 1.0;
+
+        S = S + (numerator / denominator);
     }
     printf("SUM: %.6f\n", S);
 
