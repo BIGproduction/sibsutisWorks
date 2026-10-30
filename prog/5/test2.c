@@ -3,14 +3,14 @@
 
 #define PI 3.14159265358979323846
 #define PERIODS 5
-#define SAMPLES_PER_PERIOD 20
+#define PER_PERIOD 20
 
 int main(void) {
-    int total_samples = PERIODS * SAMPLES_PER_PERIOD;
+    int total_samples = PERIODS * PER_PERIOD;
 
     for (int i = 0; i <= total_samples; i++) {
 
-        double x = 2.0 * PI * i / SAMPLES_PER_PERIOD;
+        double x = 2.0 * PI * i / PER_PERIOD;
         double y = sin(x);
 
         int position = (int)((y + 1.0) * 20 + 0.5);
