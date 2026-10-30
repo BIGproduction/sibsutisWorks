@@ -13,7 +13,7 @@ int main() {
     for (x = A; x <= B + H / 2.0; x += H) {
         double y = pow(2.0, x);
 
-        printf("%5.1f | %10.2f \n", x, y);
+        printf("%5.4f | %10.4f \n", x, y);
     }
 
     return 0;
