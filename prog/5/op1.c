@@ -24,6 +24,5 @@ int main() {
 
         printf("%5.1f | %10.2f \n", x, y);
     }
-
     return 0;
 }
