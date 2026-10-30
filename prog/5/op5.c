@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-double my_sqrt(double n) {
+double coren(double n) {
     if (n < 0) return -1.0;
     if (n == 0) return 0;
     
@@ -11,21 +11,21 @@ double my_sqrt(double n) {
     return x;
 }
 
-double my_pow_2(double x) {
+double stepen(double x) {
     return x * x;
 }
 
 double calc(double a, double b) {
-    double sum_of_squares = my_pow_2(a) + my_pow_2(b);
+    double sum_of_squares = stepen(a) + stepen(b);
     
-    double result = my_sqrt(sum_of_squares);
+    double result = coren(sum_of_squares);
     return result;
 }
 
 int main() {
     double a, b;
 
-    printf("Введите пары чисел a и b (для выхода введите любой символ вместо числа):\n");
+    printf("Введите пары чисел a и b: \n");
 
     while (scanf("%lf %lf", &a, &b) == 2) {
         double res = calc(a, b);
