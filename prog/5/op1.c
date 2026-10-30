@@ -11,7 +11,7 @@ int main() {
     printf("Показательная функция 2^x \n");
 
     for (x = A; x <= B + H / 2.0; x += H) {
-        double y = pow(2.0, x);
+        double y = exp(x * log(2.0));
 
         printf("%5.4f | %10.4f \n", x, y);
     }
