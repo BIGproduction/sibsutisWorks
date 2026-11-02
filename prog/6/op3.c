@@ -1,0 +1,34 @@
+#include <stdio.h>
+
+double stepen(double x) {
+    double result = 1.0;
+    int steps = (int)x;
+
+    for (int i = 0; i < steps; i++) {
+        result *= -1.0; 
+    }
+    return result;
+}
+
+int main() {
+    int N;
+    double S = 0.0;
+
+    N = 0;
+    while (N <= 0) {
+        printf("Введите N (N > 0): ");
+        scanf("%d", &N);
+    }
+
+    for (int i = 1; i <= N; i++) {
+        
+        double numerator = stepen(i);
+        double denominator = 2.0 * i + 1.0;
+
+        S = S + (numerator / denominator);
+    }
+    
+    printf("SUM: %.6f\n", S);
+
+    return 0;
+}
