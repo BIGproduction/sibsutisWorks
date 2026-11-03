@@ -16,7 +16,7 @@ int main(void) {
 
     total = gb * cost;
 
-    printf("Итоговая стоимость: %.1f тугрика.\n", total);
+    printf("Итоговая стоимость: %.1f тугрика\n", total);
 
     return 0;
 }

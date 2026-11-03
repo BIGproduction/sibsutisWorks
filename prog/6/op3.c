@@ -15,7 +15,7 @@ int main(void) {
     while (1) {
         printf("Число: ");
         if (scanf("%d", &num) != 1) {
-            printf("Ошибка ввода. Завершение.\n");
+            printf("Ошибка ввода. Завершение\n");
             break;
         }
 
