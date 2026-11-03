@@ -35,9 +35,6 @@ int main(void) {
         total_cost = cost1 + cost2 + cost3;
     }
 
-    printf("\n--- Расчет стоимости хранения ---\n");
-    printf("Исходный объем: %.2f ГБ\n\n", volume);
-    
     printf("Разбивка по ступеням:\n");
     
     if (volume > 0) {
