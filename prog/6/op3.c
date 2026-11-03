@@ -1,34 +1,60 @@
 #include <stdio.h>
+#include <math.h>
 
-double stepen(double x) {
-    double result = 1.0;
-    int steps = (int)x;
-
-    for (int i = 0; i < steps; i++) {
-        result *= -1.0; 
-    }
-    return result;
-}
-
-int main() {
-    int N;
-    double S = 0.0;
-
-    N = 0;
-    while (N <= 0) {
-        printf("Введите N (N > 0): ");
-        scanf("%d", &N);
-    }
-
-    for (int i = 1; i <= N; i++) {
-        
-        double numerator = stepen(i);
-        double denominator = 2.0 * i + 1.0;
-
-        S = S + (numerator / denominator);
-    }
+int main(void) {
+    int num;
     
-    printf("SUM: %.6f\n", S);
+    int count1 = 0; 
+    double sum1 = 0.0;
+    
+    int count2 = 0; 
+    double sum2 = 0.0;
+
+    printf("Введите целые числа (0 для завершения):\n");
+
+    while (1) {
+        printf("Число: ");
+        if (scanf("%d", &num) != 1) {
+            printf("Ошибка ввода. Завершение.\n");
+            break;
+        }
+
+        if (num == 0) {
+            break;
+        }
+
+        int abs_num = abs(num);
+
+        int units = abs_num % 10;
+        int tens = (abs_num / 10) % 10;
+
+        if (tens > units) {
+            count1++;
+            sum1 += num;
+        } else if (tens < units) {
+            count2++;
+            sum2 += num;
+        }
+
+    }
+
+    printf("\n--- Результаты ---\n");
+
+    if (count1 > 0) {
+        printf("1) Десятки > Единиц:\n");
+        printf("   Количество: %d\n", count1);
+        printf("   Среднее арифметическое: %.2f\n", sum1 / count1);
+    } else {
+        printf("1) Десятки > Единиц: чисел не введено.\n");
+    }
+
+    if (count2 > 0) {
+        printf("2) Десятки < Единиц (наоборот):\n");
+        printf("   Количество: %d\n", count2);
+        printf("   Среднее арифметическое: %.2f\n", sum2 / count2);
+    } else {
+        printf("2) Десятки < Единиц: чисел не введено.\n");
+    }
 
     return 0;
 }
