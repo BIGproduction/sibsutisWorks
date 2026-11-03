@@ -1,22 +1,37 @@
 #include <stdio.h>
+#include <wchar.h>
+#include <locale.h>
 
 int main() {
-    const int HEIGHT = 5;
-    const int TIERS = 3;
+    setlocale(LC_ALL, "");
 
-    for (int tier = 0; tier < TIERS; tier++) {
+    wint_t ch;
+    int count = 0;
+    int state = 0;
+
+    wprintf(L"Введите текст:\n");
+
+    while ((ch = getwchar()) != L'#' && ch != WEOF) {
         
-        for (int i = 0; i < HEIGHT; i++) {
-            
-            for (int j = 0; j < HEIGHT - 1 - i; j++) {
-                printf(" ");
-            }
-            
-            for (int k = 0; k < (2 * i + 1); k++) {
-                printf("*");
-            }
-            printf("\n");
+        switch (state) {
+            case 0:
+                if (ch == L'е') {
+                    state = 1;
+                }
+                break;
+            case 1:
+                if (ch == L'й') {
+                    count++;
+                    state = 0;
+                } else if (ch == L'е') {
+                    state = 1;
+                } else {
+                    state = 0;
+                }
+                break;
         }
     }
+    wprintf(L"Количество вхождений последовательности L\"ей\": %d\n", count);
+
     return 0;
 }
