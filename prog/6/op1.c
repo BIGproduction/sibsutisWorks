@@ -30,8 +30,6 @@ int main(void) {
         
         if (isprint(max_ascii)) {
             printf("символ с этим кодом: '%c'\n", max_ascii);
-        } else {
-            printf("символ с этим кодом не является печатным.\n");
         }
     } else {
         printf("символы для анализа не введены (сразу введен '#').\n");
