@@ -9,6 +9,7 @@ int main() {
         printf("ошибка, введите положительное число\n");
         return 1;
     }
+    printf("---------------------------\n")
     if (volume <= 10.0) {
         total_cost = volume * 1.0;
         printf("первая ступень: %.1f\n", volume, total_cost);
