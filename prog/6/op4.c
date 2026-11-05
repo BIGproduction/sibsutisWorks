@@ -22,7 +22,7 @@ int main() {
         total_cost = cost_part1 + cost_part2;
         
         printf("первая ступень: %.1f\n", cost_part1);
-        printf("третя ступень: %.1f\n", remaining_volume, cost_part2);
+        printf("вторая ступень: %.1f\n", remaining_volume, cost_part2);
     } 
     else {
         double cost_part1 = 10.0 * 1.0;
