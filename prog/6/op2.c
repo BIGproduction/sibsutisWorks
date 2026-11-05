@@ -9,7 +9,7 @@ int main() {
     int count = 0;
     int state = 0;
 
-    wprintf(L"Введите текст:\n");
+    wprintf(L"введите текст:\n");
 
     while ((ch = getwchar()) != L'#' && ch != WEOF) {
         
@@ -31,7 +31,7 @@ int main() {
                 break;
         }
     }
-    wprintf(L"Количество вхождений последовательности L\"ей\": %d\n", count);
+    wprintf(L"количество вхождений последовательности L\"ей\": %d\n", count);
 
     return 0;
 }
