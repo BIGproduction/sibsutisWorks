@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <ctype.h>
 
 int main() {
     int ch;
@@ -12,10 +11,10 @@ int main() {
     }
 
     if (max_ascii != -1) {
-        printf("Максимальный ASCII-код: %d\n", max_ascii);
-        printf("Символ: %c\n", max_ascii);
+        printf("максимальный ASCII-код: %d\n", max_ascii);
+        printf("символ: %c\n", max_ascii);
     } else {
-        printf("Символы не введены\n");
+        printf("символы не введены\n");
     }
     
     return 0;
