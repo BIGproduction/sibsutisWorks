@@ -30,7 +30,7 @@ int main() {
                 break;
         }
     }
-    wprintf(L"количество вхождений последовательности L\"ей\": %d\n", count);
+    wprintf(L"вовод кол-ва L\"ей\": %d\n", count);
 
     return 0;
 }
