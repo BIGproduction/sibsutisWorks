@@ -10,6 +10,8 @@ int main() {
 
     wprintf(L"введите текст:\n");
 
+// getchar считает один байт, а getcharw считает один широкий символ
+
     while ((ch = getwchar()) != L'#' && ch != WEOF) {
         
         switch (state) {
