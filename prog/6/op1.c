@@ -8,7 +8,7 @@ int main(void) {
 
     printf("введите текст (для завершения введите '#'):\n");
 
-    while ((ch = getchar()) != '#' && ch = EOF) {
+    while ((ch = getchar()) != '#' && ch == EOF) {
         
         if (ch == '\n') {
             continue;
