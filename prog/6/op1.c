@@ -10,6 +10,7 @@ int main(void) {
 
     while ((ch = getchar()) != '#' && ch == EOF) {
         
+
         if (ch == '\n') {
             continue;
         }
