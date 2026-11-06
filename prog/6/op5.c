@@ -28,7 +28,7 @@ int main(void) {
         printf("выберите пункт: ");
 
         if (scanf("%d,", &choice) == EOF) {
-            print("\nзавершение работы (EOF)\n");
+            printf("\nзавершение работы (EOF)\n");
             break;
         }
 
