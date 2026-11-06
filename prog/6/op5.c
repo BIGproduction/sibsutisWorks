@@ -27,6 +27,11 @@ int main(void) {
         printf("0. выход\n");
         printf("выберите пункт: ");
 
+        if (scanf("%d,", &choice) == EOF) {
+            print("\nзавершение работы (EOF)\n");
+            break;
+        }
+
         if (scanf("%d", &choice) != 1) {
             while (getchar() != '\n');
             printf("ошибка ввода\n");
