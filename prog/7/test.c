@@ -1,7 +1,10 @@
+#include <stdio.h>
+ 
 int main(void)
 {
-    int x = 10;     // определяем переменную
-    int *p;         // определяем указатель
-    p = &x;         // указатель получает адрес переменной
+    int x = 10;
+    int *p;
+    p = &x;
+    printf("%p \n", p);     // 0060FEA8
     return 0;
 }
