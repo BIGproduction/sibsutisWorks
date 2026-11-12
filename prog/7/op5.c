@@ -1,82 +1,50 @@
 #include <stdio.h>
-#include <stdlib.h>
+#include <stdbool.h>
 
-void print_binary(int num) {
-    if (num == 0) {
-        printf("0");
-        return;
+bool is_prime_iterative(int n) {
+    if (n <= 1) return false;
+
+    for (int i = 2; i * i <= n; i++) {
+        if (n % i == 0) {
+            return false;
+        }
     }
-    int started = 0;
-    for (int i = 31; i >= 0; i--) {
-        int bit = (num >> i) & 1;
-        if (bit) started = 1;
-        if (started) printf("%d", bit);
+    return true;
+}
+
+bool is_prime_recursive_helper(int n, int divisor) {
+
+    if (divisor * divisor > n) {
+        return true;
     }
+    if (n % divisor == 0) {
+        return false;
+    }
+
+    return is_prime_recursive_helper(n, divisor + 1);
+}
+
+bool is_prime_recursive(int n) {
+    if (n <= 1) return false;
+    return is_prime_recursive_helper(n, 2);
 }
 
 int main(void) {
-    int choice;
-    char input[100];
-
-    while (1) {
-        printf("\n--- меню ---\n");
-        printf("1. dec -> hex\n");
-        printf("2. dec -> oct\n");
-        printf("3. dec -> bin\n");
-        printf("4. hex -> dec\n");
-        printf("0. выход\n");
-        printf("выберите пункт: ");
-
-        if (scanf("%d,", &choice) == EOF) {
-            printf("\nзавершение работы (EOF)\n");
-            break;
-        }
-
-        if (scanf("%d", &choice) != 1) {
-            while (getchar() != '\n');
-            printf("ошибка ввода\n");
-            continue;
-        }
-        if (choice == 0) {
-            break;
-        }
-
-        switch (choice) {
-            case 1: {
-                int num;
-                printf("введите десятичное число: ");
-                scanf("%d", &num);
-                printf("результат: %X\n", num);
-                break;
-            }
-            case 2: {
-                int num;
-                printf("введите десятичное число: ");
-                scanf("%d", &num);
-                printf("результат: %o\n", num);
-                break;
-            }
-            case 3: {
-                int num;
-                printf("введите десятичное число: ");
-                scanf("%d", &num);
-                printf("результат: ");
-                print_binary(num);
-                printf("\n");
-                break;
-            }
-            case 4: {
-                printf("введите шестнадцатеричное число: ");
-                scanf("%s", input);
-                int num = (int)strtol(input, NULL, 16);
-                printf("результат: %d\n", num);
-                break;
-            }
-            default: {
-                printf("неверный номер пункта, повторите\n");
-                continue;
-            }
-        }
+    int number;
+    
+    printf("Введите целое число для проверки на простоту: ");
+    
+    if (scanf("%d", &number) != 1) {
+        printf("Ошибка ввода: ожидалось целое число.\n");
+        return 1;
     }
+
+    bool res_iter = is_prime_iterative(number);
+    bool res_rec  = is_prime_recursive(number);
+
+    printf("\n--- Результаты проверки числа %d ---\n", number);
+    printf("Итеративный метод: %s\n", res_iter ? "Простое" : "Составное");
+    printf("Рекурсивный метод: %s\n", res_rec ? "Простое" : "Составное");
+
     return 0;
 }

@@ -1,46 +1,35 @@
 #include <stdio.h>
 
-int main() {
-    double volume;
-    double total = 0.0;
+void sort_three(double *a, double *b, double *c) {
+    double temp;
 
-    printf("введите объем хранилища (ГБ): ");
-    if (scanf("%lf", &volume) != 1 || volume < 0) {
-        printf("ошибка, введите положительное число.\n");
-        return 1;
+    if (*a > *b) {
+        temp = *a;
+        *a = *b;
+        *b = temp;
     }
-    
-    printf("\n--- детализация расчета ---\n");
-
-    if (volume <= 10.0) {
-        total = volume * 1.0;
-        printf("начислено за %.1f ГБ: %.1f\n", volume, total);
-    } 
-    else if (volume <= 60.0) {
-        double cost_part1 = 10.0 * 1.0;
-        double remaining_volume = volume - 10.0;
-        double cost_part2 = remaining_volume * 0.8;
-        
-        total = cost_part1 + cost_part2;
-        
-        printf("начислено за 10 ГБ: %.1f\n", cost_part1);
-        printf("начислено за %.1f ГБ: %.1f\n", remaining_volume, cost_part2);
-    } 
-    else {
-        double cost_part1 = 10.0 * 1.0;
-        double cost_part2 = 50.0 * 0.8;
-        double remaining_volume = volume - 60.0;
-        double cost_part3 = remaining_volume * 0.5;
-        
-        total = cost_part1 + cost_part2 + cost_part3;
-        
-        printf("начислено за 10 ГБ: %.1f\n", cost_part1);
-        printf("начислено за 50 ГБ: %.1f\n", cost_part2);
-        printf("начислено за %.1f ГБ: %.1f\n", remaining_volume, cost_part3);
+    if (*a > *c) {
+        temp = *a;
+        *a = *c;
+        *c = temp;
     }
+    if (*b > *c) {
+        temp = *b;
+        *b = *c;
+        *c = temp;
+    }
+}
 
-    printf("---------------------------\n");
-    printf("итого: %.1f\n", total);
+int main(void) {
+    double x = 5.5, y = 2.1, z = 8.4;
+
+    printf("Исходные значения:\n");
+    printf("x = %.1f, y = %.1f, z = %.1f\n\n", x, y, z);
+
+    sort_three(&x, &y, &z);
+
+    printf("Отсортированные значения (по возрастанию):\n");
+    printf("x = %.1f, y = %.1f, z = %.1f\n", x, y, z);
 
     return 0;
 }
