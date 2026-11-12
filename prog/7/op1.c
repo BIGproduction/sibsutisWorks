@@ -9,7 +9,6 @@ int main(void) {
             putchar(c - 32);
         } 
         else if (c >= 'A' && c <= 'Z') {
-            // Преобразуем в строчную.
             putchar(c + 32);
         } 
         else {
