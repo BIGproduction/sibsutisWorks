@@ -32,19 +32,19 @@ bool is_prime_recursive(int n) {
 int main(void) {
     int number;
     
-    printf("Введите целое число для проверки на простоту: ");
+    printf("введите целое число для проверки на простоту: ");
     
     if (scanf("%d", &number) != 1) {
-        printf("Ошибка ввода: ожидалось целое число.\n");
+        printf("ошибка ввода\n");
         return 1;
     }
 
     bool res_iter = is_prime_iterative(number);
     bool res_rec  = is_prime_recursive(number);
 
-    printf("\n--- Результаты проверки числа %d ---\n", number);
-    printf("Итеративный метод: %s\n", res_iter ? "Простое" : "Составное");
-    printf("Рекурсивный метод: %s\n", res_rec ? "Простое" : "Составное");
+    printf("\n--- результаты проверки числа %d ---\n", number);
+    printf("итеративный метод: %s\n", res_iter ? "простое" : "составное");
+    printf("рекурсивный метод: %s\n", res_rec ? "простое" : "составное");
 
     return 0;
 }

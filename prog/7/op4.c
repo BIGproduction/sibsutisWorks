@@ -23,12 +23,12 @@ void sort_three(double *a, double *b, double *c) {
 int main(void) {
     double x = 5.5, y = 2.1, z = 8.4;
 
-    printf("Исходные значения:\n");
+    printf("исходные значения:\n");
     printf("x = %.1f, y = %.1f, z = %.1f\n\n", x, y, z);
 
     sort_three(&x, &y, &z);
 
-    printf("Отсортированные значения (по возрастанию):\n");
+    printf("отсортированные значения по возрастанию:\n");
     printf("x = %.1f, y = %.1f, z = %.1f\n", x, y, z);
 
     return 0;
