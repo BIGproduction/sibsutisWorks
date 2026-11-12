@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdbool.h>
 
-bool is_prime_iterative(int n) {
+bool reverse_iter(int n) {
     if (n <= 1) return false;
 
     for (int i = 2; i * i <= n; i++) {
@@ -12,7 +12,7 @@ bool is_prime_iterative(int n) {
     return true;
 }
 
-bool is_prime_recursive_helper(int n, int divisor) {
+bool reverse_rec(int n, int divisor) {
 
     if (divisor * divisor > n) {
         return true;
@@ -21,26 +21,26 @@ bool is_prime_recursive_helper(int n, int divisor) {
         return false;
     }
 
-    return is_prime_recursive_helper(n, divisor + 1);
+    return reverse_rec(n, divisor + 1);
 }
 
 bool is_prime_recursive(int n) {
     if (n <= 1) return false;
-    return is_prime_recursive_helper(n, 2);
+    return reverse_rec(n, 2);
 }
 
 int main(void) {
-    int number;
+    int num;
     
     printf("введите целое число для проверки на простоту: ");
     
-    if (scanf("%d", &number) != 1) {
+    if (scanf("%d", &num) != 1) {
         printf("ошибка ввода\n");
         return 1;
     }
 
-    bool res_iter = is_prime_iterative(number);
-    bool res_rec  = is_prime_recursive(number);
+    bool res_iter = reverse_iter(num);
+    bool res_rec  = is_prime_recursive(num);
 
     printf("итеративный метод: %s\n", res_iter ? "простое" : "составное");
     printf("рекурсивный метод: %s\n", res_rec ? "простое" : "составное");
