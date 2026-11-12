@@ -42,7 +42,6 @@ int main(void) {
     bool res_iter = is_prime_iterative(number);
     bool res_rec  = is_prime_recursive(number);
 
-    printf("\n--- результаты проверки числа %d ---\n", number);
     printf("итеративный метод: %s\n", res_iter ? "простое" : "составное");
     printf("рекурсивный метод: %s\n", res_rec ? "простое" : "составное");
 

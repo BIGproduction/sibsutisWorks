@@ -13,7 +13,6 @@ int main(void) {
             total_hex++;
         }
     }
-    printf("\n--- Статистика ---\n");
     printf("общее количество обработанных символов: %ld\n", total);
     printf("количество шестнадцатеричных цифр (0-9, a-f, A-F): %ld\n", total_hex);
 
