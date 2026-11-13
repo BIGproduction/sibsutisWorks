@@ -24,7 +24,7 @@ bool reverse_rec(int n, int divisor) {
     return reverse_rec(n, divisor + 1);
 }
 
-bool is_prime_recursive(int n) {
+bool reverse_rec_main(int n) {
     if (n <= 1) return false;
     return reverse_rec(n, 2);
 }
@@ -40,7 +40,7 @@ int main(void) {
     }
 
     bool res_iter = reverse_iter(num);
-    bool res_rec  = is_prime_recursive(num);
+    bool res_rec  = reverse_rec_main(num);
 
     printf("итеративный метод: %s\n", res_iter ? "простое" : "составное");
     printf("рекурсивный метод: %s\n", res_rec ? "простое" : "составное");
