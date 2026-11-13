@@ -1,20 +1,17 @@
 #include <stdio.h>
-#include <ctype.h>
+
+bool ishex(char ch) {
+    return ((ch >= '0') && (ch <='9')) || ((ch >= 'a') && (ch <= 'f')) || ((ch >= 'A') && (ch <= 'F')) ? true:false;
+}
 
 int main(void) {
-    int c;
-    long total = 0;
-    long total_hex = 0;
+   // 9 Количество шестнадцатеричных цифр (0-9, a-f, A-F)
+    char cha;
+    int counter = 0;
 
-    while ((c = getchar()) != EOF) {
-        total++;
+    while ((cha = getchar()) != EOF)
+        if (ishex(cha)) counter++;
 
-        if (isxdigit(c)) {
-            total_hex++;
-        }
-    }
-    printf("общее количество обработанных символов: %ld\n", total);
-    printf("количество шестнадцатеричных цифр (0-9, a-f, A-F): %ld\n", total_hex);
-
+    printf("total:%d\n",counter);
     return 0;
 }
