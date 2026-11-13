@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-void sort_three(double *a, double *b, double *c) {
+void sort(double *a, double *b, double *c) {
     double temp;
 
     if (*a > *b) {
@@ -26,7 +26,7 @@ int main(void) {
     printf("исходные значения:\n");
     printf("x = %.1f, y = %.1f, z = %.1f\n\n", x, y, z);
 
-    sort_three(&x, &y, &z);
+    sort(&x, &y, &z);
 
     printf("отсортированные значения по возрастанию:\n");
     printf("x = %.1f, y = %.1f, z = %.1f\n", x, y, z);
