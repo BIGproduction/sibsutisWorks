@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 int main() {
     int cpu_state[8] = {0}; 
@@ -6,7 +7,7 @@ int main() {
 
     FILE *file = fopen("program.txt", "r");
     if (file == NULL) {
-        printf("не удалось открыть файл program.txt\n");
+        printf("Ошибка: Не удалось открыть файл program.txt\n");
         return 1;
     }
 
@@ -16,10 +17,10 @@ int main() {
     }
     fclose(file);
 
-    cpu_state[3] = memory[0];
-    cpu_state[4] = 0;
+    cpu_state[3] = memory[0]; 
+    cpu_state[4] = 0;         
     
-    printf("--- начало работы процессора ---\n");
+    printf("--- Начало работы процессора ---\n");
 
     while (cpu_state[4] == 0 && cpu_state[5] == 0) {
         
@@ -33,7 +34,7 @@ int main() {
         int operand = 0;
 
         switch (opcode) {
-            case 0: // STOP
+            case 0: // СТОП
                 cpu_state[4] = 1; 
                 printf("STOP (0)\n");
                 break;
@@ -42,11 +43,11 @@ int main() {
                 operand = memory[cpu_state[0] + 1]; 
                 if (operand < 0 || operand >= 256) {
                     cpu_state[5] = 2; 
-                    printf("выход за границы памяти (адрес %d)\n", operand);
+                    printf("ОШИБКА: Выход за границы памяти (адрес %d)\n", operand);
                     break;
                 }
                 cpu_state[1] = memory[operand]; 
-                printf("команда: LOAD (1) | операнд: %d | аккумулятор: %d\n", operand, cpu_state[1]);
+                printf("Команда: LOAD (1) | Операнд: %d | Аккумулятор: %d\n", operand, cpu_state[1]);
                 cpu_state[0] += 2; 
                 break;
 
@@ -54,11 +55,11 @@ int main() {
                 operand = memory[cpu_state[0] + 1];
                 if (operand < 0 || operand >= 256) {
                     cpu_state[5] = 2; 
-                    printf("выход за границы памяти (адрес %d)\n", operand);
+                    printf("ОШИБКА: Выход за границы памяти (адрес %d)\n", operand);
                     break;
                 }
                 cpu_state[1] += memory[operand]; 
-                printf("Команда: ADD (2)  | операнд: %d | аккумулятор: %d\n", operand, cpu_state[1]);
+                printf("Команда: ADD (2)  | Операнд: %d | Аккумулятор: %d\n", operand, cpu_state[1]);
                 cpu_state[0] += 2;
                 break;
 
@@ -66,11 +67,11 @@ int main() {
                 operand = memory[cpu_state[0] + 1];
                 if (operand < 0 || operand >= 256) {
                     cpu_state[5] = 2; 
-                    printf("выход за границы памяти (адрес %d)\n", operand);
+                    printf("ОШИБКА: Выход за границы памяти (адрес %d)\n", operand);
                     break;
                 }
                 cpu_state[1] -= memory[operand]; 
-                printf("команда: SUB (3)  | операнд: %d | аккумулятор: %d\n", operand, cpu_state[1]);
+                printf("Команда: SUB (3)  | Операнд: %d | Аккумулятор: %d\n", operand, cpu_state[1]);
                 cpu_state[0] += 2;
                 break;
 
@@ -78,47 +79,45 @@ int main() {
                 operand = memory[cpu_state[0] + 1]; 
                 if (operand < 0 || operand >= 256) {
                     cpu_state[5] = 2; 
-                    printf("переход за границы памяти (адрес %d)\n", operand);
+                    printf("ОШИБКА: Переход за границы памяти (адрес %d)\n", operand);
                     break;
                 }
-                printf("команда: JUMP (4) | переход на адрес: %d\n", operand);
+                printf("Команда: JUMP (4) | Переход на адрес: %d\n", operand);
                 cpu_state[0] = operand; 
                 break;
 
             case 5: // JUMP IF ZERO
-                operand = memory[cpu_state[0] + 1];
-                
+                operand = memory[cpu_state[0] + 1]; 
                 if (operand < 0 || operand >= 256) {
                     cpu_state[5] = 2; 
-                    printf("переход за границы памяти (адрес %d)\n", operand);
+                    printf("ОШИБКА: Переход за границы памяти (адрес %d)\n", operand);
                     break;
                 }
                 
                 if (cpu_state[1] == 0) {
-                    printf("команда: JZ (5)   | ACC=0   | переход на адрес: %d\n", operand);
+                    printf("Команда: JZ (5)   | ACC=0   | Переход на адрес: %d\n", operand);
                     cpu_state[0] = operand; 
                 } else {
-                    printf("команда: JZ (5)   | ACC!=0  | переход отменен, идем дальше\n");
+                    printf("Команда: JZ (5)   | ACC!=0  | Переход отменен, идем дальше\n");
                     cpu_state[0] += 2; 
                 }
                 break;
-            // --------------------------------------------
 
             default:
                 cpu_state[5] = 1; 
-                printf("неизвестная команда %d по адресу %d\n", opcode, cpu_state[0]);
+                printf("ОШИБКА: Неизвестная команда %d по адресу %d\n", opcode, cpu_state[0]);
                 break;
         }
     }
 
     if (cpu_state[5] != 0) {
-        printf("\n--- произошло прерывание ---\n");
-        printf("код ошибки: %d\n", cpu_state[5]);
+        printf("\n--- ПРОИЗОШЛО ПРЕРЫВАНИЕ ---\n");
+        printf("Код ошибки: %d\n", cpu_state[5]);
         if (cpu_state[3] != 0) {
-            printf("переход по вектору прерываний на адрес: %d\n", cpu_state[3]);
+            printf("Переход по вектору прерываний на адрес: %d\n", cpu_state[3]);
         }
     } else {
-        printf("\n--- программа успешно завершена ---\n");
+        printf("\n--- Программа успешно завершена ---\n");
     }
 
     return 0;
