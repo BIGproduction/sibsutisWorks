@@ -5,7 +5,7 @@ int main() {
     int cpu_state[8] = {0}; 
     int memory[256] = {0};
 
-    FILE *file = fopen("program2.txt", "r");
+    FILE *file = fopen("program3.txt", "r");
     if (file == NULL) {
         printf("не удалось открыть файл program.txt\n");
         return 1;
