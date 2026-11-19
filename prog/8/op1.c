@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include "myarrfunc.h"
 
-// Очистка буфера ввода для предотвращения зацикливания при некорректном вводе
 void clear_input_buffer() {
     int c;
     while ((c = getchar()) != '\n' && c != EOF);
@@ -25,13 +24,13 @@ int main() {
         printf("g - Выход\n");
         printf("Выберите пункт: ");
 
-        if (scanf("%d", &choice) != 1) { // Проверка на корректность ввода
-            if (feof(stdin)) break; // Обработка Ctrl+D
+        if (scanf("%d", &choice) != 1) {
+            if (feof(stdin)) break;
             printf("Ошибка ввода. Попробуйте снова.\n");
             clear_input_buffer();
             continue;
         }
-        // Приведение int к char для switch (чтобы совпадало с пунктами меню)
+
         char cmd = (char)choice;
 
         switch (cmd) {
@@ -43,12 +42,11 @@ int main() {
                     clear_input_buffer();
                     break;
                 }
-                // Освобождаем старую память, если была
                 if (arr != NULL) free(arr);
                 if (temp_indices != NULL) free(temp_indices);
 
                 arr = (int*)malloc(new_size * sizeof(int));
-                temp_indices = (int*)malloc(new_size * sizeof(int)); // Буфер для индексов
+                temp_indices = (int*)malloc(new_size * sizeof(int));
                 
                 if (arr == NULL || temp_indices == NULL) {
                     printf("Ошибка выделения памяти.\n");
@@ -83,13 +81,12 @@ int main() {
                 }
                 printf("Значение\tАдрес\n");
                 for (size_t i = 0; i < size; i++) {
-                    // Вывод значения и адреса
                     printf("%d\t\t%p\n", *(arr + i), (void*)(arr + i));
                 }
                 break;
             }
 
-            case 'd': { // Функция 1
+            case 'd': { // функция 1
                 if (arr == NULL) { printf("Массив пуст.\n"); break; }
                 int k;
                 printf("Введите число k: ");
@@ -109,7 +106,7 @@ int main() {
                 break;
             }
 
-            case 'e': { // Функция 2
+            case 'e': { // функция 2
                 if (arr == NULL) { printf("Массив пуст.\n"); break; }
                 
                 int count = find_indices_between_min_max(arr, size, temp_indices);
@@ -128,7 +125,7 @@ int main() {
                 break;
             }
 
-            case 'f': { // Функция 3
+            case 'f': { // функция 3
                 if (arr == NULL) { printf("Массив пуст.\n"); break; }
                 int k;
                 printf("Введите число k: ");
