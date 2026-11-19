@@ -14,19 +14,19 @@ int main() {
     int *temp_indices = NULL;
 
     while (1) {
-        printf("\n--- МЕНЮ ---\n");
-        printf("a - Задать размер массива\n");
-        printf("b - Заполнить массив\n");
-        printf("c - Представление массива (значения, адреса)\n");
-        printf("d - [Функция 1] (Индексы элементов > k)\n");
-        printf("e - [Функция 2] (Индексы между min и max)\n");
-        printf("f - [Функция 3] (Сумма элементов > k)\n");
-        printf("g - Выход\n");
-        printf("Выберите пункт: ");
+        printf("\n--- меню ---\n");
+        printf("a - задать размер массива\n");
+        printf("b - заполнить массив\n");
+        printf("c - представление массива (значения, адреса)\n");
+        printf("d - [функция 1] (индексы элементов > k)\n");
+        printf("e - [функция 2] (индексы между min и max)\n");
+        printf("f - [функция 3] (сумма элементов > k)\n");
+        printf("g - выход\n");
+        printf("выберите пункт: ");
 
         if (scanf("%d", &choice) != 1) {
             if (feof(stdin)) break;
-            printf("Ошибка ввода. Попробуйте снова.\n");
+            printf("ошибка ввода\n");
             clear_input_buffer();
             continue;
         }
@@ -35,10 +35,10 @@ int main() {
 
         switch (cmd) {
             case 'a': {
-                printf("Введите новый размер массива: ");
+                printf("введите новый размер массива: ");
                 size_t new_size;
                 if (scanf("%zu", &new_size) != 1 || new_size == 0) {
-                    printf("Некорректный размер.\n");
+                    printf("некорректный размер\n");
                     clear_input_buffer();
                     break;
                 }
@@ -49,37 +49,37 @@ int main() {
                 temp_indices = (int*)malloc(new_size * sizeof(int));
                 
                 if (arr == NULL || temp_indices == NULL) {
-                    printf("Ошибка выделения памяти.\n");
+                    printf("ошибка выделения памяти\n");
                     exit(1);
                 }
                 size = new_size;
-                printf("Массив размера %zu создан (память выделена).\n", size);
+                printf("массив размера %zu создан\n", size);
                 break;
             }
 
             case 'b': {
                 if (arr == NULL) {
-                    printf("Сначала задайте размер (пункт a).\n");
+                    printf("сначала задайте размер (пункт a)\n");
                     break;
                 }
                 printf("Введите %zu целых чисел:\n", size);
                 for (size_t i = 0; i < size; i++) {
                     if (scanf("%d", arr + i) != 1) {
-                        printf("Ошибка при вводе элемента.\n");
+                        printf("ошибка при вводе элемента\n");
                         clear_input_buffer();
                         break;
                     }
                 }
-                printf("Массив заполнен.\n");
+                printf("массив заполнен\n");
                 break;
             }
 
             case 'c': {
                 if (arr == NULL) {
-                    printf("Массив не создан.\n");
+                    printf("массив не создан\n");
                     break;
                 }
-                printf("Значение\tАдрес\n");
+                printf("значение\tадрес\n");
                 for (size_t i = 0; i < size; i++) {
                     printf("%d\t\t%p\n", *(arr + i), (void*)(arr + i));
                 }
@@ -87,17 +87,17 @@ int main() {
             }
 
             case 'd': { // функция 1
-                if (arr == NULL) { printf("Массив пуст.\n"); break; }
+                if (arr == NULL) { printf("массив пуст\n"); break; }
                 int k;
-                printf("Введите число k: ");
+                printf("введите число k: ");
                 if (scanf("%d", &k) != 1) { clear_input_buffer(); break; }
                 
                 int count = find_indices_above_k(arr, size, k, temp_indices);
                 
                 if (count == 0) {
-                    printf("Элементов больше %d нет.\n", k);
+                    printf("элементов больше %d нет\n", k);
                 } else {
-                    printf("Индексы элементов > %d: ", k);
+                    printf("индексы элементов > %d: ", k);
                     for (int i = 0; i < count; i++) {
                         printf("%d ", temp_indices[i]);
                     }
@@ -107,14 +107,14 @@ int main() {
             }
 
             case 'e': { // функция 2
-                if (arr == NULL) { printf("Массив пуст.\n"); break; }
+                if (arr == NULL) { printf("массив пуст\n"); break; }
                 
                 int count = find_indices_between_min_max(arr, size, temp_indices);
                 
                 if (count == -1) {
-                    printf("Ошибка или массив слишком мал.\n");
+                    printf("ошибка или массив слишком мал\n");
                 } else if (count == 0) {
-                    printf("Между min и max нет элементов (они соседние или совпадают).\n");
+                    printf("между min и max нет элементов\n");
                 } else {
                     printf("Индексы элементов между min и max: ");
                     for (int i = 0; i < count; i++) {
@@ -126,25 +126,25 @@ int main() {
             }
 
             case 'f': { // функция 3
-                if (arr == NULL) { printf("Массив пуст.\n"); break; }
+                if (arr == NULL) { printf("массив пуст\n"); break; }
                 int k;
-                printf("Введите число k: ");
+                printf("введите число k: ");
                 if (scanf("%d", &k) != 1) { clear_input_buffer(); break; }
                 
                 long long sum = sum_elements_above_k(arr, size, k);
-                printf("Сумма элементов > %d равна: %lld\n", k, sum);
+                printf("сумма элементов > %d равна: %lld\n", k, sum);
                 break;
             }
 
             case 'g': {
-                printf("Выход из программы.\n");
+                printf("выход из программы\n");
                 if (arr) free(arr);
                 if (temp_indices) free(temp_indices);
                 return 0;
             }
 
             default:
-                printf("Неверный пункт меню.\n");
+                printf("неверный пункт меню\n");
                 break;
         }
     }
