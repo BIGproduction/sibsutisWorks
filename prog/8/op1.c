@@ -12,7 +12,7 @@ int main() {
     int *arr = NULL;
     size_t size = 0;
     int choice;
-    int *temp_indices = NULL; // Вспомогательный массив для хранения индексов
+    int *temp_indices = NULL;
 
     while (1) {
         printf("\n--- МЕНЮ ---\n");
@@ -152,7 +152,6 @@ int main() {
         }
     }
 
-    // Освобождение памяти перед выходом
     if (arr) free(arr);
     if (temp_indices) free(temp_indices);
     return 0;

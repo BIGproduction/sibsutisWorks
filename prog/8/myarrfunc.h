@@ -1,20 +1,10 @@
 #ifndef MYARRFUNC_H
 #define MYARRFUNC_H
 
-#include <stddef.h> // Для size_t
+#include <stddef.h>
 
-// 1. Определение индексов элементов, значения которых выше заданного k
-// Возвращает количество найденных элементов или -1 при ошибке.
-// Индексы сохраняются в массив indices (размер indices должен быть >= n).
 int find_indices_above_k(int *arr, size_t n, int k, int *indices);
-
-// 2. Вычисление индексов элементов между минимальным и максимальным значениями массива
-// Возвращает количество элементов между min и max или -1, если min и max рядом или ошибка.
-// Индексы сохраняются в массив indices.
 int find_indices_between_min_max(int *arr, size_t n, int *indices);
-
-// 3. Определение суммы элементов массива по значению выше введенного k
-// Возвращает сумму или 0, если таких элементов нет (или -1 при ошибке, если сумма может быть отрицательной).
 long long sum_elements_above_k(int *arr, size_t n, int k);
 
 #endif
